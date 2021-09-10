@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.alibaba.csp.sentinel.annotation.SentinelResource;
@@ -20,6 +21,7 @@ import com.jacdong.interview.user.constant.UserWanrningMessage;
 import com.jacdong.interview.user.service.UserService;
 import com.jacdong.interview.user.vo.UserVO;
 
+import io.lettuce.core.dynamic.annotation.Param;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
@@ -29,7 +31,9 @@ import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 
 /**
- * 获取登录用户信息接口 Created by macro on 2020/6/19.
+ * 
+ * @author DongBin
+ *
  */
 @RestController
 @RequestMapping("/{version}/user")
@@ -70,11 +74,11 @@ public class UserController {
 	 * @author DongBin
 	 * @date 2021-09-08 05:01:03
 	 */
-	@GetMapping("/get/{userId}")
+	@GetMapping("get")
 	@ApiOperation(value = "查询用户", notes = "传入参数是UserVO对象")
 	@ApiResponses({ @ApiResponse(code = 200, message = "查询用户成功") })
 	@SentinelResource(value = "query", fallback = "userFallback", blockHandler = "userhandleException")
-	public CommonResult<UserVO> user(@PathVariable String userId) {
+	public CommonResult<UserVO> user(@RequestParam(value = "userId") String userId) {
 
 		UserVO userVO = userService.getUser(userId);
 
@@ -93,7 +97,7 @@ public class UserController {
 	 */
 	@ApiOperation(value = "更新用户", notes = "传入参数是UserVO对象")
 	@ApiResponses({ @ApiResponse(code = 200, message = "用户更新成功") })
-	@PutMapping("/update")
+	@PutMapping("update")
 	@SentinelResource(value = "update", fallback = "userFallback", blockHandler = "userhandleException")
 	public CommonResult<UserVO> update(
 			@ApiParam(value = "用户基本信息实例", required = true) @Validated @RequestBody UserVO userVO) {
@@ -124,9 +128,9 @@ public class UserController {
 		@ApiResponse(code = 500, message = "系统发生错误") })
 	@ApiImplicitParams({
 			@ApiImplicitParam(name = "userId", value = "用户id", dataType = "string", paramType = "delete", required = true, defaultValue = "USER223590125559484416") })
-	@DeleteMapping("/del/{userId}")
+	@DeleteMapping("del")
 	@SentinelResource(value = "delete", fallback = "userFallback", blockHandler = "userhandleException")
-	public CommonResult<String> delUser(@PathVariable String userId) throws InterruptedException {
+	public CommonResult<String> delUser(@RequestParam(value = "userId") String userId) throws InterruptedException {
 
 		int count = userService.delUser(userId);
 

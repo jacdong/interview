@@ -30,7 +30,6 @@ public class ResourceServiceImpl {
     @PostConstruct
     public void initData() {
         resourceRolesMap = new TreeMap<>();
-        resourceRolesMap.put("/api/v1/hello", CollUtil.toList("ADMIN"));
         resourceRolesMap.put("/api/v1/user/add", CollUtil.toList("ADMIN"));
         resourceRolesMap.put("/api/v1/user/get", CollUtil.toList("ADMIN", "TEST"));
         resourceRolesMap.put("/api/v1/user/del", CollUtil.toList("ADMIN"));
