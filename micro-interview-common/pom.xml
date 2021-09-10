@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<project
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd"
+	xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+	<groupId>com.jacdong.interview</groupId>
+	<artifactId>micro-interview-common</artifactId>
+	<version>1.0.0-RELEASES</version>
+	<name>micro-interview-common</name>
+	<url>http://maven.apache.org</url>
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<spring-boot.version>2.3.0.RELEASE</spring-boot.version>
+	</properties>
+	<dependencies>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>5.2.6.RELEASE</version>
+		</dependency>
+	</dependencies>
+
+		<!-- Maven 配置使用私服（下载依赖） -->
+	<repositories>
+		<repository>
+			<id>maven-nexus</id>
+			<name>maven-nexus</name>
+			<url>http://192.168.56.103:8081/repository/maven-public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<!-- Maven 配置使用私服（下载插件） -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-nexus</id>
+			<name>maven-nexus</name>
+			<url>http://192.168.56.103:8081/nexus/repository/maven-public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Maven 配置使用私服（发布依赖） -->
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://192.168.56.103:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshot</name>
+			<url>http://192.168.56.103:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
