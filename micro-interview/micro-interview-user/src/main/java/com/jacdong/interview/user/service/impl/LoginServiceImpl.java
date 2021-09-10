@@ -21,10 +21,13 @@ public class LoginServiceImpl implements LoginService {
 	public LoginUserVO login(LoginUserVO loginUserVO) {
 		
 		String orginPassword = loginUserVO.getPassword();
-		String encodingPwd = passwordEncoder.encode(orginPassword);
-		LoginUserVO resultLoginUserVO = loginMapper.user(loginUserVO.getUsername(), encodingPwd);
+		LoginUserVO resultLoginUserVO = loginMapper.user(loginUserVO.getUsername());
 
-		return resultLoginUserVO;
+		boolean isPasswordMatch = passwordEncoder.matches(orginPassword, resultLoginUserVO.getPassword());
+		if(isPasswordMatch) {
+			return resultLoginUserVO;
+		}
+		return null;
 	}
 
 }

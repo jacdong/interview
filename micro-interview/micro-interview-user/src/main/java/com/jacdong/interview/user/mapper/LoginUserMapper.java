@@ -13,10 +13,10 @@ public interface LoginUserMapper {
 	@Update("update t_user_login set status = 1 where userId = #{userId}")
 	public int update(String userId);
 	
-	@Insert("insert t_user_login (loginid , userid , username , password , status , role , createTime , lastmodifiedTime) "
-			+ "values (#{loginId},#{userId},#{username} , #{password},#{status},#{role},now(),now())")
+	@Insert("insert t_user_login (loginid , userid , username , password , status , createTime , lastmodifiedTime) "
+			+ "values (#{loginId},#{userId},#{username} , #{password},#{status},now(),now())")
 	public int create(LoginUserVO userVO);
 	
-	@Select("select userId , username , password ,role , status from t_user_login where username = #{username} and password = #{password}")
-	public LoginUserVO user(String username,String password);
+	@Select("select userId , username , password , status from t_user_login where username = #{username}")
+	public LoginUserVO user(String username);
 }

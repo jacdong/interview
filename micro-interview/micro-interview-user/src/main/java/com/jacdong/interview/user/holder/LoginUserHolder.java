@@ -8,11 +8,13 @@ import org.springframework.web.context.request.ServletRequestAttributes;
 
 import com.jacdong.interview.user.vo.LoginUserVO;
 
+import cn.hutool.core.convert.Convert;
 import cn.hutool.json.JSONObject;
 
 /**
- * 获取登录用户信息
- * Created by macro on 2020/6/17.
+ * 
+ * @author DongBin
+ *
  */
 @Component
 public class LoginUserHolder {
@@ -26,8 +28,8 @@ public class LoginUserHolder {
         LoginUserVO userDTO = new LoginUserVO();
         userDTO.setUsername(userJsonObject.getStr("user_name"));
         userDTO.setUserId(userJsonObject.getStr("id"));
-//        userDTO.setRole(Convert.toList(String.class,userJsonObject.get("authorities")));
-        userDTO.setRole(userJsonObject.getStr("authorities"));
+        userDTO.setRoles(Convert.toList(String.class,userJsonObject.get("authorities")));
+//        userDTO.setRole(userJsonObject.getStr("authorities"));
         return userDTO;
     }
 }

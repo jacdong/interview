@@ -6,7 +6,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.jacdong.interview.common.CommonResult;
 import com.jacdong.interview.user.service.LoginService;
 import com.jacdong.interview.user.vo.LoginUserVO;
 
@@ -19,10 +18,11 @@ public class LoginController {
 	private LoginService loginService;
 	
 	@PostMapping("/user")
-	public CommonResult<LoginUserVO> user(@RequestBody LoginUserVO loginUserVO){
+	public LoginUserVO user(@RequestBody LoginUserVO loginUserVO){
 		
 		LoginUserVO resultLoginUserVO = loginService.login(loginUserVO);
 		
-		return CommonResult.success(resultLoginUserVO);
+		return resultLoginUserVO;
 	}
+	
 }
