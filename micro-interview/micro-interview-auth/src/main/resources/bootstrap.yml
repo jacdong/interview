@@ -1,0 +1,25 @@
+server:
+  port: 8882
+spring: 
+  application:
+    name: micro-interview-auth
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.5.65.114:8848
+        namespace: micro-service
+      config: 
+        server-addr: 121.5.65.114:8848
+        group: interview
+        namespace: micro-service
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: http://192.168.56.103:9100
+        clientIp: localhost
+      filter:
+        url-patterns:
+        - /**
+  profiles:
+    active:
+    - dev

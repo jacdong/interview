@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<parent>
+		<artifactId>micro-interview</artifactId>
+		<groupId>com.jacdong.interview</groupId>
+		<version>1.0.0</version>
+	</parent>
+	<modelVersion>4.0.0</modelVersion>
+	<packaging>jar</packaging>
+
+	<groupId>com.jacdong.interview.auth</groupId>
+	<artifactId>micro-interview-auth</artifactId>
+
+
+	<properties>
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jacdong.interview.user</groupId>
+			<artifactId>micro-interview-user-api</artifactId>
+			<version>1.0.0-SNAPSHOTS</version>
+		</dependency>
+
+		<dependency>
+			<groupId>com.jacdong.interview</groupId>
+			<artifactId>micro-interview-common</artifactId>
+			<version>1.0.0-RELEASES</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-oauth2</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.nimbusds</groupId>
+			<artifactId>nimbus-jose-jwt</artifactId>
+			<version>8.16</version>
+		</dependency>
+		<!-- redis -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-config</artifactId>
+		</dependency>
+
+		<!--服务发现pom -->
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-nacos-discovery</artifactId>
+		</dependency>
+		<!-- spring boot test -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>com.alibaba.cloud</groupId>
+			<artifactId>spring-cloud-starter-alibaba-sentinel</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-openfeign</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-actuator</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>org.mybatis.spring.boot</groupId>
+			<artifactId>mybatis-spring-boot-starter-test</artifactId>
+			<version>1.3.2</version>
+		</dependency>
+	</dependencies>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<goals>
+							<goal>repackage</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+		</plugins>
+	</build>
+	<!-- Maven 配置使用私服（下载依赖） -->
+	<repositories>
+		<repository>
+			<id>maven-nexus</id>
+			<name>maven-nexus</name>
+			<url>http://192.168.56.103:8081/repository/maven-public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+	<!-- Maven 配置使用私服（下载插件） -->
+	<pluginRepositories>
+		<pluginRepository>
+			<id>maven-nexus</id>
+			<name>maven-nexus</name>
+			<url>http://192.168.56.103:8081/nexus/repository/maven-public/</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<!-- Maven 配置使用私服（发布依赖） -->
+	<distributionManagement>
+		<repository>
+			<id>releases</id>
+			<name>Releases</name>
+			<url>http://192.168.56.103:8081/repository/maven-releases/</url>
+		</repository>
+		<snapshotRepository>
+			<id>snapshots</id>
+			<name>Snapshot</name>
+			<url>http://192.168.56.103:8081/repository/maven-snapshots/</url>
+		</snapshotRepository>
+	</distributionManagement>
+</project>
