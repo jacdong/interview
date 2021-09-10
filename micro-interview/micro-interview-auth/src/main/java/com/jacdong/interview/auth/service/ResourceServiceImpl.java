@@ -32,7 +32,9 @@ public class ResourceServiceImpl {
         resourceRolesMap = new TreeMap<>();
         resourceRolesMap.put("/api/v1/hello", CollUtil.toList("ADMIN"));
         resourceRolesMap.put("/api/v1/user/add", CollUtil.toList("ADMIN"));
-        resourceRolesMap.put("/api/v1/user/*", CollUtil.toList("ADMIN", "TEST"));
+        resourceRolesMap.put("/api/v1/user/get", CollUtil.toList("ADMIN", "TEST"));
+        resourceRolesMap.put("/api/v1/user/del", CollUtil.toList("ADMIN"));
+        resourceRolesMap.put("/api/v1/user/update", CollUtil.toList("ADMIN"));
         redisTemplate.opsForHash().putAll(RedisConstant.RESOURCE_ROLES_MAP, resourceRolesMap);
     }
 }
