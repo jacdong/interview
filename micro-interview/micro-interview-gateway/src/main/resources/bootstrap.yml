@@ -1,0 +1,57 @@
+server:
+  port: 8881
+spring:
+  profiles:
+    active: dev
+  application:
+    name: micro-interview-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.5.65.114:8848
+        namespace: micro-service
+      config: 
+        server-addr: 121.5.65.114:8848
+        group: interview
+        namespace: micro-service
+        file-extension: yaml
+    sentinel:
+      transport:
+        dashboard: http://192.168.56.103:9100
+        clientIp: localhost        
+        
+#        prefix: micro-interview-gateway
+         
+#    gateway:
+#      routes: #配置路由路径
+#        - id: oauth2-api-route
+#          uri: lb://micro-interview-api
+#          predicates:
+#            - Path=/api/**
+#          filters:
+#            - StripPrefix=1
+#        - id: oauth2-auth-route
+#          uri: lb://micro-interview-auth
+#          predicates:
+#            - Path=/auth/**
+#          filters:
+#            - StripPrefix=1
+#      discovery:
+#        locator:
+#          enabled: true #开启从注册中心动态创建路由的功能
+#          lower-case-service-id: true #使用小写服务名，默认是大写
+#  security:
+#    oauth2:
+#      resourceserver:
+#        jwt:
+#          jwk-set-uri: 'http://localhost:9401/rsa/publicKey' #配置RSA的公钥访问地址
+#  redis:
+#    database: 0
+#    port: 6379
+#    host: 121.5.65.114
+#    password: jacdong
+#secure: 
+#  ignore:
+#    urls: #配置白名单路径
+#      - "/actuator/**"
+#      - "/auth/oauth/token"
