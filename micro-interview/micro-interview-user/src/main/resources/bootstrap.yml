@@ -1,0 +1,50 @@
+server:
+  port: 8883
+spring:
+  profiles:
+    active: dev
+  application:
+    name: micro-interview-user
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 121.5.65.114:8848
+        namespace: micro-service
+      config: 
+        server-addr: 121.5.65.114:8848
+        group: interview
+        namespace: micro-service
+        file-extension: yaml
+        max-retry: 10
+    sentinel:
+      transport:
+        dashboard: http://192.168.56.103:9100
+        clientIp: localhost
+      filter:
+        url-patterns:
+        - /**
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://121.5.65.114:3306/interview?useUnicode=true&characterEncoding=utf8
+    username: root
+    password: pass
+    
+    
+  jackson:
+    default-property-inclusion: NON_EMPTY
+    deserialization:
+      fail-on-unknown-properties: false
+    parser:
+      allow-unquoted-control-chars: true
+      allow-single-quotes: true
+    property-naming-strategy: LOWER_CAMEL_CASE
+  redis:
+    database: 0
+    port: 6379
+    host: 121.5.65.114
+    password: jacdong
+    
+snowflake:
+  machine-id: 1
+  datacenter-id: 1
+    
