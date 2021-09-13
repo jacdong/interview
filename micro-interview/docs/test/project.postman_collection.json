@@ -1,0 +1,82 @@
+{
+	"info": {
+		"_postman_id": "081c84dd-e61e-4f3f-880f-0099f6642493",
+		"name": "project",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "getToken",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "delUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "addUser",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX25hbWUiOiJtYWNybyIsInNjb3BlIjpbImFsbCJdLCJpZCI6MSwiZXhwIjoxNjMxMDcxMDAxLCJhdXRob3JpdGllcyI6WyJBRE1JTiJdLCJqdGkiOiI5YWU0MDZiMS1iMTNjLTRjNjUtYjhlNC0zY2RiZDhhNWNjY2EiLCJjbGllbnRfaWQiOiJjbGllbnQtYXBwIn0.cSgPxtdPirtaWHomlU8VdhazdElmbyb1P9ciuJGFfOkvAiwX36KSQfwMj6UJtg21CkKCQxXVCt53sYchVRUfVAWmjD6Stzgy9K08P3Koxw7_EufCmWCVi_xqBpR20Obe0vrXBhBXzjq1ZwtW1d-V4zWutetgS_V9PrTC4DWU5IQ",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\":\"jacdong\",\r\n    \"age\":150,\r\n    \"address\":\"anhui hefei\",\r\n    \"dob\":\"2020-10-10\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8881/api/v1/user/add",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8881",
+					"path": [
+						"api",
+						"v1",
+						"user",
+						"add"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "getUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		},
+		{
+			"name": "updateUser",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
