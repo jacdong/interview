@@ -19,7 +19,7 @@ spring:
     sentinel:
       transport:
         dashboard: http://139.196.217.88:9100
-        clientIp: localhost
+#        clientIp: localhost
       filter:
         url-patterns:
         - /**
