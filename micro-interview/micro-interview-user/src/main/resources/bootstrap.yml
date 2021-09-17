@@ -18,7 +18,7 @@ spring:
         max-retry: 10
     sentinel:
       transport:
-        dashboard: http://192.168.56.103:9100
+        dashboard: http://139.196.217.88:9100
         clientIp: localhost
       filter:
         url-patterns:
